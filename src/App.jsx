@@ -1,5 +1,6 @@
 
 import './App.css'
+import SignupForm from './components/SignupForm'
 import { Button } from './components/ui/button'
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <> 
-      <Button variant="glass">Click me</Button>
+      <SignupForm/>
 
      </>
   )
