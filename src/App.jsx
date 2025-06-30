@@ -1,14 +1,24 @@
 
 import './App.css'
-import SignupForm from './components/SignupForm'
-import { Button } from './components/ui/button'
+
+// import LandingPage from './pages/LandingPage'
+
+
+
+import SignUpPage from './pages/SignUpPage'
+
 
 function App() {
   
 
   return (
     <> 
-      <SignupForm/>
+   
+
+
+      <SignUpPage/>
+   
+      
 
      </>
   )

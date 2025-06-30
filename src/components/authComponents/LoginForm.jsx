@@ -2,12 +2,12 @@ import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { Mail, Lock, User, Shield, Eye, EyeOff, Phone, ArrowRight } from "lucide-react"
 
-import { cn } from "../lib/utils"
-import { Button } from "./ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "./ui/form"
-import { Input } from "./ui/input"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card"
-import { Switch } from "./ui/switch"
+import { cn } from "../../lib/utils"
+import { Button } from "../ui/button"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { Input } from "../ui/input"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
+import { Switch } from "../ui/switch"
 
 export default function LoginForm() {
   const [isAdmin, setIsAdmin] = useState(false)
