@@ -20,7 +20,7 @@ export default defineConfig({
       theme: {
         extend: {
           colors: {
-            // Off-white theme colors
+            
             border: "#d6d3d1", // stone-300
             input: "#d6d3d1", // stone-300
             ring: "#8b5cf6", // purple-500
@@ -129,10 +129,10 @@ export default defineConfig({
             "slide-in-left": "slideInLeft 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
             "slide-in-right": "slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards",
             "scale-in": "scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards",
-            float: "float 6s ease-in-out infinite",
-            shimmer: "shimmer 2s infinite",
-            gradient: "gradient 4s ease infinite",
-            pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            "float": "float 6s ease-in-out infinite",
+            "shimmer": "shimmer 2s infinite",
+            "gradient": "gradient 4s ease infinite",
+            "pulse": "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
           },
           backdropBlur: {
             xs: "2px",

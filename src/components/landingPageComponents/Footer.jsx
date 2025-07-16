@@ -9,16 +9,11 @@ export default function Footer() {
 
   return (
     <footer className="bg-slate-900 text-white relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-0 left-1/3 w-64 h-64 bg-gradient-to-br from-purple-600/5 to-indigo-600/5 rounded-full blur-3xl"></div>
-      </div>
-
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 relative z-10 max-w-7xl">
         <div className="flex flex-col sm:flex-row justify-between items-center space-y-8 sm:space-y-0">
-          {/* Brand */}
+         
           <div className="flex items-center space-x-4 group">
-            <div className="w-12 h-12 bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300 group-hover:scale-105">
+            <div className="w-12 h-12 bg-gradient-to-br from-indigo-600 to-indigo-700 rounded-xl flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300 group-hover:scale-105">
               <Sparkles className="text-white w-6 h-6" />
             </div>
             <div>
@@ -27,13 +22,13 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Social Links */}
+          
           <div className="flex items-center space-x-4">
             {socialLinks.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
-                className="group p-3 rounded-lg text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 transition-all duration-300 hover:scale-110 hover:-translate-y-1 backdrop-blur-sm border border-slate-700/50"
+                className="group p-3 rounded-lg text-slate-400 hover:text-white bg-slate-800 hover:bg-slate-700 transition-all duration-300 hover:scale-110 hover:-translate-y-1"
                 aria-label={social.label}
               >
                 <social.icon className="w-5 h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -42,9 +37,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
+        
         <div className="border-t border-slate-800 mt-12 pt-8 text-center">
-          <p className="text-slate-400 font-light">&copy; 2024 EmpTrack. Professional development showcase.</p>
+          <p className="text-slate-400 font-light">&copy; 2025 EmpTrack. Professional development showcase.</p>
         </div>
       </div>
     </footer>
