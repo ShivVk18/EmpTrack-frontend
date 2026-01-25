@@ -9,6 +9,7 @@ import {
   BarChart2,
   Sparkles,
   Shield,
+  ClipboardList,
 } from "lucide-react";
 
 export const FEATURES = {
@@ -42,11 +43,23 @@ export const FEATURES = {
     desc: "Track and approve attendance records",
     path: "/admin/dashboard/attendance",
   },
-  leave: {
+  attendancePlan: {
+    icon: ClipboardList,
+    title: "Attendance Plan",
+    desc: "Create and assign attendance policies",
+    path: "/admin/dashboard/attendance-plan",
+  },
+  leavePolicy: {
     icon: Calendar,
-    title: "Leave",
-    desc: "Apply for or manage leave requests",
-    path: "/admin/dashboard/leave",
+    title: "Leave Policy",
+    desc: "Add or manage leave policies",
+    path: "/admin/dashboard/leave-policy",
+  },
+    leave: {
+    icon: Calendar,
+    title: "Manage Leaves",
+    desc: "Manage leave Applications",
+    path: "/admin/dashboard/manage-apply-leave",
   },
   holidays: {
     icon: Sparkles,
@@ -57,7 +70,7 @@ export const FEATURES = {
   complaints: {
     icon: Bell,
     title: "Complaints",
-    desc: "Raise or handle employee complaints",
+    desc: "Handle employee complaints",
     path: "/admin/dashboard/complaints",
   },
   analytics: {

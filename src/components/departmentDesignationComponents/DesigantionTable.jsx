@@ -20,7 +20,9 @@ import { useDesignationModalStore } from "@/store/useDesignationModalStore";
 
 const DesignationTable = ({ departmentId, onUpdate }) => {
   const { designations, pagination, loading, fetchDesignations, setPage } =
-    useDesignationTableData(departmentId);
+    useDesignationTableData(departmentId);  
+
+    
   
     const { openModal, isModalOpen } = useDesignationModalStore();
 
@@ -265,7 +267,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
         </Card>
       </div>
 
-      {/* Mobile Card Layout */}
+      
       <div className="md:hidden space-y-3">
         {designations.map((desig, _) => (
           <Card key={desig.id} className="p-3">

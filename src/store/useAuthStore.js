@@ -10,12 +10,13 @@ export const useAuthStore = create(
       role: null,
       userType: null,
       token: null,
-
+      
       setUser: ({ user, token, userType }) => {
       if (!user || !userType || !token) {
     return get().logout();
   }
-
+     
+  
   
   const isEmployee = userType === 'employee';
   if (isEmployee && !user.role) {

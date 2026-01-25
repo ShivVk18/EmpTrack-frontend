@@ -4,7 +4,6 @@ import {
   FormItem,
   FormLabel,
   FormControl,
-  FormMessage,
 } from "@/components/ui/form";
 import {
   Select,
@@ -14,7 +13,7 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 
-export const FormSelect = ({ name, label, options, onChange, disabled = false }) => {
+export const FormSelect = ({ name, label, options = [], onValueChange, disabled = false }) => {
   const { control } = useFormContext();
 
   return (
@@ -26,7 +25,10 @@ export const FormSelect = ({ name, label, options, onChange, disabled = false })
           <FormLabel>{label}</FormLabel>
           <Select
             value={field.value}
-            onValueChange={onChange || field.onChange}
+            onValueChange={(value) => {
+              field.onChange(value);
+              onValueChange?.(value);
+            }}
             disabled={disabled}
           >
             <SelectTrigger className="h-11">
@@ -34,16 +36,12 @@ export const FormSelect = ({ name, label, options, onChange, disabled = false })
             </SelectTrigger>
             <SelectContent>
               {options.map((opt) => (
-                <SelectItem
-                  key={opt.id || opt.value || opt.name || opt}
-                  value={opt.value || opt.name || opt}
-                >
-                  {opt.label || opt.name || opt}
+                <SelectItem key={opt.value} value={String(opt.value)}>
+                  {opt.label}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-        
         </FormItem>
       )}
     />

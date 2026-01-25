@@ -1,12 +1,10 @@
-import React, { useCallback, useMemo, Suspense } from "react";
-import { useNavigate } from "react-router";
+import React, { useMemo, Suspense } from "react";
+
 import { DashboardLayout } from "@/components/dashboardComponents/DashboardLayout";
 import { useAuthStore } from "@/store/useAuthStore";
 import { EMPLOYEE_FEATURES } from "@/config/employeeFeatures";
 import { useEmployeeStats } from "@/hooks/useEmployeeStats";
 import { Skeleton } from "@/components/ui/skeleton";
- 
-
 
 const EmployeeStatsOverview = React.lazy(() =>
   import("@/components/employeeStatsComponents/EmployeeStatsOverview")
@@ -14,17 +12,13 @@ const EmployeeStatsOverview = React.lazy(() =>
 
 const EmployeeManagementPage = () => {
   const user = useAuthStore((state) => state.user);
-  const navigate = useNavigate();
-  const { stats, loading } = useEmployeeStats();
 
-  const handleAddEmployee = useCallback(() => {
-    navigate("/admin/dashboard/employee-management/add");
-  }, [navigate]);
+  const { stats, loading } = useEmployeeStats();
 
   const employeeConfig = useMemo(
     () => ({
       appName: "EmpTrack",
-      portalName: "Employee Management",
+      portalName: "Admin Portal",
       variant: "admin",
       user: {
         name: user.name,
@@ -37,15 +31,7 @@ const EmployeeManagementPage = () => {
   );
 
   return (
-    <DashboardLayout
-      config={employeeConfig}
-      searchPlaceholder="Search employee"
-      actionButton={{
-        label: "Add Employee",
-        onClick: handleAddEmployee,
-      }}
-      minimalLayout
-    >
+    <DashboardLayout config={employeeConfig} minimalLayout>
       <div className="p-4">
         <Suspense
           fallback={
@@ -59,7 +45,9 @@ const EmployeeManagementPage = () => {
           {!loading && stats ? (
             <EmployeeStatsOverview stats={stats} />
           ) : (
-            <div className="text-center py-10 text-gray-500">Loading stats...</div>
+            <div className="text-center py-10 text-gray-500">
+              Loading stats...
+            </div>
           )}
         </Suspense>
       </div>

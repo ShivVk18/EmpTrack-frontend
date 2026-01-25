@@ -10,11 +10,20 @@ import { addEmployeeSchema } from "@/lib/zodSchema";
 import { countryCodes } from "../../../constants/countryCodes";
 import { employeeTypes, genderOptions, roles } from "@/lib/enumUtils";
 
-
-import { AlertCircle, Upload, X, User, Briefcase, MapPin, CreditCard } from "lucide-react";
+import {
+  AlertCircle,
+  Upload,
+  X,
+  User,
+  Briefcase,
+  MapPin,
+  CreditCard,
+} from "lucide-react";
 import { FormInput } from "../formComponents/FormInput";
 import { FormSelect } from "../formComponents/FormSelect";
 import Spinner from "../ui/Spinner";
+import { useEmployeeStore } from "@/store/useEmployeeStore";
+import { useFetchAndResetForm } from "@/hooks/useFetchAndResetForm";
 
 const AddEmployeeForm = () => {
   const [step, setStep] = useState(1);
@@ -25,6 +34,13 @@ const AddEmployeeForm = () => {
   const { departments, designations, fetchDepartments, fetchDesignations } =
     useDepartmentOptions();
   const { submitForm, loading } = useFormSubmit();
+
+  const { editId } = useEmployeeStore();
+
+  useFetchAndResetForm({
+    id: editId,
+    endpoint: "",
+  });
 
   const form = useForm({
     resolver: zodResolver(addEmployeeSchema),
@@ -56,7 +72,7 @@ const AddEmployeeForm = () => {
   });
 
   const formErrors = form.formState.errors;
-  
+
   const onSubmit = (data) => {
     submitForm({
       data,
@@ -78,25 +94,67 @@ const AddEmployeeForm = () => {
   const stepTitles = ["Personal Info", "Work Details", "Location & Banking"];
   const stepIcons = [User, Briefcase, MapPin];
 
-  
   const getCurrentStepFields = () => {
-    const step1Fields = ["employeeCode", "employeeName", "email", "password", "countryCode", "mobileNo", "gender", "dob"];
-    const step2Fields = ["salary", "type", "role", "departmentName", "designationName"];
-    const step3Fields = ["countryName", "stateName", "cityName", "accountNo", "bankCode", "pfAccountNo"];
-    
+    const step1Fields = [
+      "employeeCode",
+      "employeeName",
+      "email",
+      "password",
+      "countryCode",
+      "mobileNo",
+      "gender",
+      "dob",
+    ];
+    const step2Fields = [
+      "salary",
+      "type",
+      "role",
+      "departmentName",
+      "designationName",
+    ];
+    const step3Fields = [
+      "countryName",
+      "stateName",
+      "cityName",
+      "accountNo",
+      "bankCode",
+      "pfAccountNo",
+    ];
+
     return step === 1 ? step1Fields : step === 2 ? step2Fields : step3Fields;
   };
 
-  const currentStepErrors = getCurrentStepFields().filter(field => formErrors[field]);
-
+  const currentStepErrors = getCurrentStepFields().filter(
+    (field) => formErrors[field]
+  );
+  
   const getStepErrors = (stepNumber) => {
     const stepFields = (() => {
-      if (stepNumber === 1) return ["employeeCode", "employeeName", "email", "password", "countryCode", "mobileNo", "gender", "dob"];
-      if (stepNumber === 2) return ["salary", "type", "role", "departmentName", "designationName"];
-      if (stepNumber === 3) return ["countryName", "stateName", "cityName", "accountNo", "bankCode", "pfAccountNo"];
+      if (stepNumber === 1)
+        return [
+          "employeeCode",
+          "employeeName",
+          "email",
+          "password",
+          "countryCode",
+          "mobileNo",
+          "gender",
+          "dob",
+        ];
+      if (stepNumber === 2)
+        return ["salary", "type", "role", "departmentName", "designationName"];
+      if (stepNumber === 3)
+        return [
+          "countryName",
+          "stateName",
+          "cityName",
+          "accountNo",
+          "bankCode",
+          "pfAccountNo",
+        ];
       return [];
     })();
-    return stepFields.some(field => formErrors[field]);
+    return stepFields.some((field) => formErrors[field]);
   };
 
   const handleImageUpload = (event) => {
@@ -124,8 +182,8 @@ const AddEmployeeForm = () => {
           <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
             <div className="text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start space-x-2 mb-2">
-                {React.createElement(stepIcons[step - 1], { 
-                  className: "w-5 h-5 text-white" 
+                {React.createElement(stepIcons[step - 1], {
+                  className: "w-5 h-5 text-white",
                 })}
                 <h2 className="text-lg sm:text-xl font-bold text-white">
                   {stepTitles[step - 1]}
@@ -135,7 +193,7 @@ const AddEmployeeForm = () => {
                 Step {step} of {stepTitles.length}
               </p>
             </div>
-            
+
             {/* Step Indicators */}
             <div className="flex justify-center sm:justify-end">
               <div className="flex space-x-2">
@@ -195,7 +253,9 @@ const AddEmployeeForm = () => {
                   <div className="flex flex-col items-center space-y-4 p-4 border-2 border-dashed border-gray-300 rounded-lg bg-gray-50">
                     <div className="flex items-center space-x-2 mb-2">
                       <AlertCircle className="w-4 h-4 text-gray-600" />
-                      <span className="text-sm font-medium text-gray-700">Profile Picture</span>
+                      <span className="text-sm font-medium text-gray-700">
+                        Profile Picture
+                      </span>
                     </div>
                     {previewImage ? (
                       <div className="relative">
@@ -258,7 +318,7 @@ const AddEmployeeForm = () => {
                       placeholder="Enter password"
                       required
                     />
-                    
+
                     {/* Mobile Number with Country Code */}
                     <div className="sm:col-span-2 xl:col-span-1">
                       <div className="flex gap-2">
@@ -281,7 +341,7 @@ const AddEmployeeForm = () => {
                         </div>
                       </div>
                     </div>
-                    
+
                     <FormSelect
                       name="gender"
                       label="Gender"
@@ -295,7 +355,7 @@ const AddEmployeeForm = () => {
                       type="date"
                       required
                     />
-                    
+
                     {/* Address Fields - Full Width on Mobile */}
                     <div className="sm:col-span-2 xl:col-span-3">
                       <FormInput
@@ -353,20 +413,25 @@ const AddEmployeeForm = () => {
                       options={roles}
                       required
                     />
-                    <FormSelect
-                      name="departmentName"
-                      label="Department"
-                      placeholder="Select department"
-                      options={departments?.map((dept) => ({
-                        label: dept.name,
-                        value: dept.name,
-                      }))}
-                      required
-                      onValueChange={(value) => {
-                        form.setValue("departmentName", value);
-                        fetchDesignations(value);
-                      }}
-                    />
+                  <FormSelect
+                                      name="departmentName"
+                                      label="Department Name"
+                                      placeholder="Select department"
+                                      options={departments.map((dept) => ({
+                                        label: dept.name,
+                                        value: dept.name,
+                                      }))}
+                                      required
+                                      onValueChange={(selectedName) => {
+                                        form.setValue("departmentName", selectedName);
+                                        const selectedDept = departments.find(
+                                          (dept) => dept.name === selectedName
+                                        );
+                                        if (selectedDept) {
+                                          fetchDesignations(selectedDept.id);
+                                        }
+                                      }}
+                                    />
                     <FormSelect
                       name="designationName"
                       label="Designation"
@@ -398,7 +463,6 @@ const AddEmployeeForm = () => {
                   </div>
 
                   <div className="space-y-6">
-                    {/* Location Section */}
                     <div>
                       <div className="flex items-center space-x-2 mb-4">
                         <MapPin className="w-4 h-4 text-blue-600" />
@@ -453,7 +517,6 @@ const AddEmployeeForm = () => {
                       </div>
                     </div>
 
-                    {/* Banking Section */}
                     <div>
                       <div className="flex items-center space-x-2 mb-4">
                         <CreditCard className="w-4 h-4 text-green-600" />
@@ -529,16 +592,21 @@ const AddEmployeeForm = () => {
                       disabled={loading}
                       className="w-full sm:w-auto px-4 py-2 text-sm font-medium transition-colors bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed"
                     >
-                      
-  {loading ? (
-    <div className="flex items-center gap-2">
-      <Spinner size="16px" thickness="border-2" color="border-white" />
-      Submitting...
-    </div>
-  ) : (
-    "Add Employee"
-  )}
-</Button>
+                      {loading ? (
+                        <div className="flex items-center gap-2">
+                          <Spinner
+                            size="16px"
+                            thickness="border-2"
+                            color="border-white"
+                          />
+                          Submitting...
+                        </div>
+                      ) : (  
+                       editId ? "Edit Button" : "Add Employee"
+
+                        
+                      )}
+                    </Button>
                   )}
                 </div>
               </div>

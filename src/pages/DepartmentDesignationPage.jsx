@@ -25,7 +25,7 @@ const DepartmentDesignationPage = () => {
   const departmentDesignationConfig = useMemo(
     () => ({
       appName: "EmpTrack",
-      portalName: "Employee Management",
+      portalName: "Admin Portal",
       variant: "admin",
       user: {
         name: user.name,

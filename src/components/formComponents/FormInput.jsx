@@ -1,5 +1,11 @@
-import { useFormContext } from "react-hook-form";
-import { FormField, FormItem, FormLabel, FormControl, FormMessage } from "@/components/ui/form";
+import { useFormContext, Controller } from "react-hook-form";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
 export const FormInput = ({ name, label, placeholder = "", type = "text" }) => {
@@ -13,9 +19,22 @@ export const FormInput = ({ name, label, placeholder = "", type = "text" }) => {
         <FormItem>
           <FormLabel>{label}</FormLabel>
           <FormControl>
-            <Input {...field} placeholder={placeholder} type={type} className="h-11" />
+            <Input
+              {...field}
+              placeholder={placeholder}
+              type={type}
+              className="h-11"
+              onChange={(e) => {
+                const value =
+                  type === "number"
+                    ? e.target.value === "" ? "" : Number(e.target.value)
+                    : e.target.value;
+                field.onChange(value);
+              }}
+              value={field.value ?? ""}
+            />
           </FormControl>
-         
+          <FormMessage />
         </FormItem>
       )}
     />

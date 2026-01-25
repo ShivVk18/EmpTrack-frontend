@@ -10,20 +10,19 @@ export const useFetchAndResetForm = ({
   enabled = true,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [fetched, setFetched] = useState(false); // ✅ ADD THIS
+  const [fetched, setFetched] = useState(false); 
 
   useEffect(() => {
     let isMounted = true;
     const fetchData = async () => {
-      if (!id || !enabled || fetched) return; // ✅ prevent repeated fetch
-
+      if (!id || !enabled || fetched) return; 
       try {
         setLoading(true);
         const res = await api.get(`${endpoint}/${id}`);
         const mapped = mapResponse(res.data.data);
         if (isMounted) {
           form.reset(mapped);
-          setFetched(true); // ✅ avoid future fetches
+          setFetched(true); 
         }
       } catch (error) {
         if (isMounted) {
