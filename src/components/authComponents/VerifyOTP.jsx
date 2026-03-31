@@ -115,13 +115,13 @@ const VerifyOTP = () => {
   return (
     <div className="w-full relative">
       {/* Background Effects */}
-      <div className="absolute -top-3 -right-3 w-12 h-12 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-purple-600/10 via-indigo-600/8 to-blue-600/6 rounded-full blur-xl sm:blur-2xl animate-pulse pointer-events-none"></div>
-      <div className="absolute -bottom-3 -left-3 w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-indigo-600/10 via-blue-600/8 to-purple-600/6 rounded-full blur-xl sm:blur-2xl animate-pulse pointer-events-none" style={{ animationDelay: "1s" }}></div>
+      <div className="absolute -top-3 -right-3 w-12 h-12 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-amber-200/25 rounded-full blur-xl sm:blur-2xl pointer-events-none"></div>
+      <div className="absolute -bottom-3 -left-3 w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-amber-100/30 rounded-full blur-xl sm:blur-2xl pointer-events-none" style={{ animationDelay: "1s" }}></div>
 
       <div className="relative z-10 space-y-3 sm:space-y-6 w-full">
         {/* Header */}
-        <div className="text-center pb-2 sm:pb-3 border-b border-purple-100">
-          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-purple-600">
+        <div className="text-center pb-2 sm:pb-3 border-b border-amber-100">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-amber-700">
             Verify One-Time Password
           </h3>
           <p className="text-xs sm:text-sm text-slate-600 pt-1">We have sent an OTP to your registered email</p>
@@ -152,14 +152,14 @@ const VerifyOTP = () => {
 
             {/* Timer & Resend */}
             <div className="flex items-center justify-center space-x-4 text-xs sm:text-sm text-slate-600">
-              <span>Time Remaining: <span className="font-medium text-indigo-600">{formatTime(timer)}</span></span>
+              <span>Time Remaining: <span className="font-medium text-amber-700">{formatTime(timer)}</span></span>
               <Button
                 type="button"
                 onClick={handleResend}
                 variant="outline"
                 size="sm"
                 disabled={isResendDisabled}
-                className="h-7 text-xs sm:h-8 sm:text-sm border-slate-300 hover:border-indigo-400 hover:text-indigo-600 transition-all duration-200"
+                className="h-7 text-xs sm:h-8 sm:text-sm border-slate-300 hover:border-amber-400 hover:text-amber-700 transition-all duration-200"
               >
                 Resend OTP
               </Button>
@@ -168,7 +168,7 @@ const VerifyOTP = () => {
             {/* Verify Button */}
             <Button
               type="submit"
-              className="w-full h-9 sm:h-10 lg:h-12 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg text-xs sm:text-sm lg:text-base"
+              className="w-full h-9 sm:h-10 lg:h-12 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-200 text-xs sm:text-sm lg:text-base shadow-sm hover:shadow-md"
             >
               Verify OTP
             </Button>

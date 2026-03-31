@@ -5,7 +5,7 @@ const DepartmentBarChart = ({data}) => {
     return(
     <div className="bg-white rounded-xl p-4 lg:p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
       <div className="flex items-center mb-4 lg:mb-6">
-        <div className="bg-gradient-to-br from-blue-500 to-blue-600 p-2 lg:p-3 rounded-lg shadow-md mr-3">
+        <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-2 lg:p-3 rounded-lg shadow-md mr-3">
           <Building className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
         </div>
         <div>
@@ -37,15 +37,15 @@ const DepartmentBarChart = ({data}) => {
             />
             <Bar 
               dataKey="count" 
-              fill="url(#blueGradient)" 
+              fill="url(#amberGradient)" 
               radius={[6, 6, 0, 0]}
-              stroke="#4F46E5"
+              stroke="#D97706"
               strokeWidth={1}
             />
             <defs>
-              <linearGradient id="blueGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#4F46E5" />
-                <stop offset="100%" stopColor="#6366F1" />
+              <linearGradient id="amberGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#F59E0B" />
+                <stop offset="100%" stopColor="#D97706" />
               </linearGradient>
             </defs>
           </BarChart>

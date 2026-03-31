@@ -11,14 +11,15 @@ import {
   KeyRound, 
   LogOut,
   UserCheck,
-  UserX
+  UserX,
+  ArrowLeft
 } from 'lucide-react';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger, DropdownMenuSeparator } from '../ui/dropdown-menu';
 import { useAuthStore } from '@/store/useAuthStore';
 import api from '@/utils/axiosInstance';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { toast } from 'sonner';
 
 export function Topbar({ 
@@ -35,6 +36,7 @@ export function Topbar({
   const token = useAuthStore((state) => state.token);
   const { user, userType } = useAuthStore.getState();
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -55,13 +57,20 @@ export function Topbar({
   const getGradientColors = () => {
     switch (config.variant) {
       case 'employee':
-        return 'from-emerald-600 via-blue-600 to-teal-600 hover:from-emerald-700 hover:via-blue-700 hover:to-teal-700 shadow-emerald-600/25 hover:shadow-emerald-600/30';
+        return 'from-amber-400 via-amber-500 to-amber-600 hover:from-amber-500 hover:via-amber-600 hover:to-amber-700 shadow-amber-400/25 hover:shadow-amber-400/30';
       case 'manager':
-        return 'from-orange-600 via-red-600 to-pink-600 hover:from-orange-700 hover:via-red-700 hover:to-pink-700 shadow-orange-600/25 hover:shadow-orange-600/30';
+        return 'from-amber-500 via-amber-600 to-amber-700 hover:from-amber-600 hover:via-amber-700 hover:to-amber-800 shadow-amber-500/25 hover:shadow-amber-500/30';
       default:
-        return 'from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 shadow-indigo-600/25 hover:shadow-indigo-600/30';
+        return 'from-amber-600 via-amber-700 to-amber-800 hover:from-amber-700 hover:via-amber-800 hover:to-amber-900 shadow-amber-700/25 hover:shadow-amber-700/30';
     }
   };
+
+  const showBackButton = (() => {
+    const segments = location.pathname.split('/').filter(Boolean);
+    // Show back button when deeper than top-level dashboard (e.g. /admin/dashboard/... or /employee/dashboard/...)
+    if (segments.length <= 2) return false;
+    return segments[1] === 'admin' || segments[1] === 'employee';
+  })();
 
   // Toggle Clock In/Out Handler
   const handleClockToggle = async () => {
@@ -126,31 +135,46 @@ export function Topbar({
   };
 
   return (
-    <header className="bg-white/90 backdrop-blur-sm border-b border-stone-200/80 shadow-sm shadow-stone-900/5 relative z-40">
+    <header className="bg-amber-50/90 backdrop-blur-md border-b border-amber-200/80 shadow-sm shadow-amber-900/5 relative z-40">
       <div className="flex justify-between items-center px-4 lg:px-8 py-6">
         {/* Mobile Menu Button */}
-        <div className="flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={onMenuToggle}
-            className="lg:hidden p-2 h-auto"
-          >
-            <Menu className="w-5 h-5 text-slate-600" />
-          </Button>
+        <div className="flex items-center space-x-3 lg:space-x-4">
+          <div className="flex items-center space-x-2">
+            {showBackButton && (
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate(-1)}
+                className="p-2 h-auto rounded-full"
+                aria-label="Go back"
+              >
+                <ArrowLeft className="w-4 h-4 text-amber-700" />
+              </Button>
+            )}
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={onMenuToggle}
+              className="lg:hidden p-2 h-auto rounded-full"
+              aria-label="Open sidebar"
+            >
+              <Menu className="w-5 h-5 text-amber-700" />
+            </Button>
+          </div>
 
           {/* Time & Location - Hidden on small screens */}
           <div className="hidden sm:flex items-center space-x-4 xl:space-x-6">
             <div className="text-sm">
               <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4 text-indigo-600" />
-                <span className="font-semibold text-slate-900">{currentTime}</span>
+                <Clock className="w-4 h-4 text-amber-600" />
+                <span className="font-semibold text-amber-900">{currentTime}</span>
               </div>
             </div>
             <div className="hidden md:block text-sm">
               <div className="flex items-center space-x-2">
-                <MapPin className="w-4 h-4 text-purple-600" />
-                <span className="text-slate-700">Admin Center</span>
+                <MapPin className="w-4 h-4 text-amber-500" />
+                <span className="text-amber-800">Admin Center</span>
               </div>
             </div>
           </div>
@@ -159,11 +183,11 @@ export function Topbar({
         {/* Search - Responsive */}
         <div className="flex-1 max-w-md mx-4 lg:mx-8">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-500 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-amber-600 w-4 h-4" />
             <Input
               type="text"
               placeholder={searchPlaceholder}
-              className="pl-10 pr-4 rounded-xl border-stone-200/80 focus:border-indigo-300 focus:ring-2 focus:ring-indigo-600/20 bg-white/50 backdrop-blur-sm"
+              className="pl-10 pr-4 rounded-xl border-amber-200/80 focus:border-amber-400 focus:ring-2 focus:ring-amber-500/25 bg-white/60 backdrop-blur-sm transition-all"
             />
           </div>
         </div>
@@ -179,9 +203,9 @@ export function Topbar({
                 disabled={loading}
                 className={`hidden md:flex ${
                   isClockedIn 
-                    ? "bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800" 
-                    : "bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
-                } text-white rounded-xl px-4 py-2.5 text-sm font-medium shadow-md hover:shadow-lg transition-all duration-200`}
+                    ? "bg-gradient-to-r from-amber-700 to-amber-900 hover:from-amber-800 hover:to-amber-950" 
+                    : "bg-gradient-to-r from-amber-600 to-amber-800 hover:from-amber-700 hover:to-amber-900"
+                } text-white rounded-xl px-4 py-2.5 text-sm font-medium shadow-md hover:shadow-lg transition-all duration-200 border border-amber-700`}
               >
                 {isClockedIn ? (
                   <>
@@ -202,8 +226,8 @@ export function Topbar({
                 disabled={loading}
                 className={`md:hidden p-2 ${
                   isClockedIn 
-                    ? "bg-gradient-to-r from-red-600 to-red-700" 
-                    : "bg-gradient-to-r from-green-600 to-green-700"
+                    ? "bg-gradient-to-r from-amber-700 to-amber-900" 
+                    : "bg-gradient-to-r from-amber-600 to-amber-800"
                 } text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-200`}
                 title={isClockedIn ? "Clock Out" : "Clock In"}
               >
@@ -250,24 +274,24 @@ export function Topbar({
                     <User className="w-4 h-4 text-white" />
                   )}
                 </div>
-                <span className="hidden sm:block font-medium text-slate-700">{config.user.name.split(' ')[0]}</span>
-                <ChevronDown className="w-4 h-4 text-slate-500" />
+                <span className="hidden sm:block font-medium text-amber-900">{config.user.name.split(' ')[0]}</span>
+                <ChevronDown className="w-4 h-4 text-amber-500" />
               </Button>
             </DropdownMenuTrigger>
             
-            <DropdownMenuContent align="end" className="w-48 bg-white/95 backdrop-blur-sm border-stone-200/80 rounded-xl">
-              <DropdownMenuItem className="flex items-center space-x-3 p-3">
-                <User className="w-4 h-4 text-slate-600" />
-                <span className="text-slate-700">My Profile</span>
+            <DropdownMenuContent align="end" className="w-48 bg-amber-50/95 backdrop-blur-sm border-amber-200/80 rounded-xl shadow-lg shadow-amber-900/10">
+              <DropdownMenuItem className="flex items-center space-x-3 p-3 cursor-pointer">
+                <User className="w-4 h-4 text-amber-600" />
+                <span className="text-amber-900">My Profile</span>
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex items-center space-x-3 p-3">
-                <KeyRound className="w-4 h-4 text-slate-600" />
-                <span className="text-slate-700">Change Password</span>
+              <DropdownMenuItem className="flex items-center space-x-3 p-3 cursor-pointer">
+                <KeyRound className="w-4 h-4 text-amber-600" />
+                <span className="text-amber-900">Change Password</span>
               </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="flex items-center space-x-3 p-3 text-red-600">
+              <DropdownMenuSeparator className="bg-amber-100" />
+              <DropdownMenuItem className="flex items-center space-x-3 p-3 text-red-600 cursor-pointer">
                 <LogOut className="w-4 h-4" />
-                <Button variant='default' onClick={signOutClickHandler}>
+                <Button variant='ghost' onClick={signOutClickHandler} className="p-0 h-auto text-red-600 hover:text-red-700 hover:bg-transparent -ml-2">
                   <span>Sign Out</span>
                 </Button> 
               </DropdownMenuItem>

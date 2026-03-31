@@ -25,9 +25,9 @@ const EmployeeDashboardPage = () => {
     },
     features: employeeFeatures,
     stats: [
-      { title: "Total Working Days", value: "22", icon: Calendar, color: "from-purple-600 to-purple-700" },
-      { title: "Days Attended", value: "19", icon: UserCheck, color: "from-indigo-600 to-indigo-700" },
-      { title: "Performance", value: "88.5%", icon: TrendingUp, color: "from-blue-600 to-blue-700" },
+      { title: "Total Working Days", value: "22", icon: Calendar, color: "from-amber-500 to-amber-600" },
+      { title: "Days Attended", value: "19", icon: UserCheck, color: "from-orange-500 to-amber-600" },
+      { title: "Performance", value: "88.5%", icon: TrendingUp, color: "from-amber-600 to-orange-600" },
       { title: "Leaves Taken", value: "2", icon: Clock, color: "from-emerald-600 to-emerald-700" },
     ],
   }

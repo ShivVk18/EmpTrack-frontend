@@ -28,15 +28,15 @@ export const DepartmentCard = ({ department, refetch }) => {
   };
 
   return (
-    <Card className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-lg hover:border-gray-300 transition-all duration-500 flex flex-col justify-between min-h-[340px] sm:min-h-[300px] md:min-h-[320px] transform hover:-translate-y-[2px]">
+    <Card className="group relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm hover:shadow-md hover:border-gray-300 transition-all duration-250 flex flex-col justify-between min-h-[340px] sm:min-h-[300px] md:min-h-[320px]">
      
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 to-slate-50/0 group-hover:from-blue-50/30 group-hover:to-slate-50/20 transition-all duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-amber-50/0 to-slate-50/0 group-hover:from-amber-50/35 group-hover:to-slate-50/20 transition-all duration-250 pointer-events-none" />
 
       
       <CardHeader className="pb-3 relative z-10">
         <div className="flex items-start gap-3">
           
-          <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+          <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-amber-700 flex items-center justify-center group-hover:scale-[1.05] transition-transform duration-200">
             <Building2 className="w-5 h-5 text-white" />
           </div>
 
@@ -65,7 +65,7 @@ export const DepartmentCard = ({ department, refetch }) => {
             {department.designations?.slice(0, 3).map((desig) => (
               <span
                 key={desig.id}
-                className="text-xs px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full font-medium hover:bg-blue-200 transition-colors"
+                className="text-xs px-3 py-1.5 bg-amber-100 text-amber-700 rounded-full font-medium hover:bg-amber-200 transition-colors duration-150"
               >
                 {desig.name}
               </span>
@@ -95,7 +95,7 @@ export const DepartmentCard = ({ department, refetch }) => {
             onClick={() => handleDeleteDepartment(department.id)}
           >
             <span className="flex items-center justify-center gap-1">
-              <Trash2 className="w-4 h-4 group-hover/delete:scale-110 transition-transform" />
+              <Trash2 className="w-4 h-4 group-hover/delete:scale-105 transition-transform duration-150" />
               <span>Delete</span>
             </span>
           </Button>
@@ -103,11 +103,11 @@ export const DepartmentCard = ({ department, refetch }) => {
           <Button
             size="sm"
             variant="default"
-            className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white border-0 shadow-sm hover:shadow-md transition-all group/view"
+            className="w-full sm:w-auto bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 text-white border-0 shadow-sm hover:shadow-md transition-all duration-150 group/view"
             onClick={handleViewDetails}
           >
             <span className="flex items-center justify-center gap-1">
-              <Eye className="w-4 h-4 group-hover/view:scale-110 transition-transform" />
+              <Eye className="w-4 h-4 group-hover/view:scale-105 transition-transform duration-150" />
               <span>View</span>
             </span>
           </Button>

@@ -60,7 +60,7 @@ const DepartmentDesignationPage = () => {
             <div className="min-h-[200px] flex items-center justify-center">
               <Spinner
                 size="48px"
-                color="border-purple-500"
+                color="border-amber-500"
                 label="Loading Departments..."
               />
             </div>

@@ -126,19 +126,19 @@ export default function SignupForm() {
         {/* Steps Indicator */}
         <div className="flex items-center justify-center space-x-1 sm:space-x-3 mb-3 sm:mb-6 w-full">
           <div className="flex items-center space-x-1">
-            <div className={`w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-semibold ${step >= 1 ? "bg-gradient-to-r from-purple-600 to-indigo-600 text-white" : "bg-stone-200 text-stone-500"}`}>
+            <div className={`w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-semibold ${step >= 1 ? "bg-amber-500 text-white" : "bg-stone-200 text-stone-500"}`}>
               1
             </div>
-            <span className={`text-xs sm:text-sm font-medium hidden xs:inline ${step >= 1 ? "text-purple-600" : "text-stone-500"}`}>
+            <span className={`text-xs sm:text-sm font-medium hidden xs:inline ${step >= 1 ? "text-amber-700" : "text-stone-500"}`}>
               Personal
             </span>
           </div>
-          <div className={`w-3 sm:w-5 h-0.5 ${step >= 2 ? "bg-gradient-to-r from-purple-600 to-indigo-600" : "bg-stone-200"}`}></div>
+          <div className={`w-3 sm:w-5 h-0.5 ${step >= 2 ? "bg-amber-400" : "bg-stone-200"}`}></div>
           <div className="flex items-center space-x-1">
-            <div className={`w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-semibold ${step >= 2 ? "bg-gradient-to-r from-indigo-600 to-blue-600 text-white" : "bg-stone-200 text-stone-500"}`}>
+            <div className={`w-5 h-5 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-xs font-semibold ${step >= 2 ? "bg-amber-600 text-white" : "bg-stone-200 text-stone-500"}`}>
               2
             </div>
-            <span className={`text-xs sm:text-sm font-medium hidden xs:inline ${step >= 2 ? "text-indigo-600" : "text-stone-500"}`}>
+            <span className={`text-xs sm:text-sm font-medium hidden xs:inline ${step >= 2 ? "text-amber-700" : "text-stone-500"}`}>
               Company
             </span>
           </div>
@@ -317,7 +317,7 @@ export default function SignupForm() {
         <div className="text-center pt-4 border-t border-stone-200">
           <p className="text-sm text-stone-600">
             Already have an account?{" "}
-            <Link to="/login" className="font-medium text-purple-600 hover:underline">
+            <Link to="/login" className="font-medium text-amber-700 hover:underline">
               Sign in
             </Link>
           </p>

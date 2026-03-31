@@ -7,11 +7,11 @@ export function DashboardHeader({ config, className = '' }) {
   const getGradientColors = () => {
     switch (config.variant) {
       case 'employee':
-        return 'from-emerald-600 via-blue-600 to-teal-600';
+        return 'from-amber-500 via-amber-600 to-orange-600';
       case 'managerialRole':
         return 'from-orange-600 via-red-600 to-pink-600';
       default:
-        return 'from-purple-600 via-indigo-600 to-blue-600';
+        return 'from-amber-600 via-amber-700 to-orange-700';
     }
   };
 

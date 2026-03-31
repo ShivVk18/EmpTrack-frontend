@@ -33,22 +33,22 @@ const EmployeeStatsOverview = ({ stats }) => {
             <div className="text-gray-600">Inactive</div>
             <div className="text-lg sm:text-xl font-bold text-red-600">{overview.inactive}</div>
           </div>
-          <div className="bg-blue-50 p-3 rounded-lg">
+          <div className="bg-amber-50 p-3 rounded-lg">
             <div className="text-gray-600">Active %</div>
-            <div className="text-lg sm:text-xl font-bold text-blue-600">{overview.activePercentage}%</div>
+            <div className="text-lg sm:text-xl font-bold text-amber-700">{overview.activePercentage}%</div>
           </div>
 
           {overview.totalBudget && (
             <>
-              <div className="bg-purple-50 p-3 rounded-lg col-span-2 sm:col-span-1">
+              <div className="bg-amber-100/60 p-3 rounded-lg col-span-2 sm:col-span-1">
                 <div className="text-gray-600">Total Budget</div>
-                <div className="text-sm sm:text-lg font-bold text-purple-600 truncate">
+                <div className="text-sm sm:text-lg font-bold text-amber-700 truncate">
                   ₹{overview.totalBudget.toLocaleString()}
                 </div>
               </div>
-              <div className="bg-indigo-50 p-3 rounded-lg col-span-2 sm:col-span-1">
+              <div className="bg-amber-50 p-3 rounded-lg col-span-2 sm:col-span-1">
                 <div className="text-gray-600">Avg Salary</div>
-                <div className="text-sm sm:text-lg font-bold text-indigo-600 truncate">
+                <div className="text-sm sm:text-lg font-bold text-amber-700 truncate">
                   ₹{overview.averageSalary.toLocaleString()}
                 </div>
               </div>

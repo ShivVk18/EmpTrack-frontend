@@ -57,7 +57,7 @@ const DepartmentForm = ({ onClose, refetch, enabled = true }) => {
       <div className="bg-white shadow-xl rounded-2xl border border-slate-200 p-5 sm:p-6 md:p-8 max-w-screen-md mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center gap-3 border-b border-slate-200 pb-4">
-          <Building2 className="w-5 h-5 text-purple-600" />
+          <Building2 className="w-5 h-5 text-amber-600" />
           <h3 className="text-lg sm:text-xl font-semibold tracking-tight text-slate-800">
             {id ? "Update Department" : "Add Department"}
           </h3>
@@ -66,7 +66,7 @@ const DepartmentForm = ({ onClose, refetch, enabled = true }) => {
         {/* Form */}
         {formLoading ? (
           <div className="text-center py-8">
-            <Spinner size="24px" color="border-purple-500" />
+            <Spinner size="24px" color="border-amber-500" />
             <p className="mt-2 text-sm text-slate-500">Loading department...</p>
           </div>
         ) : (
@@ -110,7 +110,7 @@ const DepartmentForm = ({ onClose, refetch, enabled = true }) => {
                 <Button
                   type="submit"
                   disabled={loading || !form.formState.isDirty}
-                  className="bg-purple-600 hover:bg-purple-700 text-white transition-colors w-full sm:w-auto"
+                  className="bg-amber-600 hover:bg-amber-700 text-white transition-colors w-full sm:w-auto"
                 >
                   {loading ? (
                     <div className="flex items-center justify-center gap-2">

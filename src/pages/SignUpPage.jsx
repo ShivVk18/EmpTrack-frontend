@@ -14,7 +14,7 @@ const SignUpPage = () => {
               Create Your Account
             </h2>
             <p className="text-xs sm:text-sm lg:text-base text-slate-600">
-              Join <span className="font-medium text-purple-600">EmpTrack</span>{" "}
+              Join <span className="font-medium text-amber-600">EmpTrack</span>{" "}
               to manage your workforce efficiently
             </p>
           </div>

@@ -15,7 +15,7 @@ const LoginPage = () => {
             </h2> 
             <p className="text-sm sm:text-base lg:text-lg text-slate-600">
               Welcome back to{" "}
-              <span className="font-medium text-purple-600">EmpTrack</span>,
+              <span className="font-medium text-amber-600">EmpTrack</span>,
               your workforce management partner
             </p>
           </div>

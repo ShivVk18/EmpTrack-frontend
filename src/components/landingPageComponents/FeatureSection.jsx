@@ -1,5 +1,6 @@
 import { Users, Settings, BarChart2, Shield, CheckCircle } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { motion } from "motion/react"
 
 export default function FeaturesSection() {
   const features = [
@@ -47,60 +48,92 @@ export default function FeaturesSection() {
         "Comprehensive audit trails",
       ],
     },
-  ]
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { staggerChildren: 0.15 } 
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } }
+  };
 
   return (
-    <section id="features" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-[#064e3b] rounded-3xl">
+    <section id="features" className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-amber-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        {/* Section Header - 60% Primary */}
-        <div className="text-center mb-16 sm:mb-20 max-w-3xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-white leading-tight">
+        
+        {/* Section Header */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 sm:mb-20 max-w-3xl mx-auto"
+        >
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-amber-100 border border-amber-200 text-amber-900 font-semibold text-sm mb-6 shadow-sm">
+            Platform Features
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-amber-950 leading-tight">
             Powerful Features for
-            <span className="block text-green-400">Employee Management</span>
+            <span className="block text-amber-800/90">Modern Teams</span>
           </h2>
-          <p className="text-lg sm:text-xl text-green-100 leading-relaxed font-light">
+          <p className="text-lg sm:text-xl text-amber-900/75 leading-relaxed font-light">
             Everything you need to manage your workforce efficiently, from onboarding to payroll processing.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Features Grid - Responsive */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+        {/* Features Grid */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10"
+        >
           {features.map((feature, idx) => (
-            <Card
-              key={idx}
-              className="group h-full border border-green-700/30 bg-white/95 hover:bg-white shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 rounded-3xl overflow-hidden backdrop-blur-sm"
-            >
-              <CardHeader className="pb-4 p-6 sm:p-8">
-                <div className="flex items-start space-x-4 sm:space-x-6 mb-4">
-                  {/* 10% Accent - Icon */}
-                  <div className="p-3 sm:p-4 bg-green-100 rounded-2xl group-hover:bg-green-200 transition-all duration-300 group-hover:scale-110 shadow-sm">
-                    <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-green-600 transition-colors duration-300 group-hover:text-green-700" />
+            <motion.div key={idx} variants={itemVariants}>
+              <Card
+                className="group h-full border border-amber-200 bg-white hover:bg-amber-50/60 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 rounded-3xl overflow-hidden hover:border-amber-300"
+              >
+                <CardHeader className="pb-4 p-6 sm:p-8 relative z-10">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-amber-50 rounded-bl-[100px] -z-10 group-hover:bg-amber-100/90 transition-colors duration-300"></div>
+                  
+                  <div className="flex items-start space-x-4 sm:space-x-6 mb-4">
+                    <div className="p-3 sm:p-4 bg-amber-100 rounded-2xl group-hover:bg-amber-600 transition-all duration-300 shadow-sm group-hover:shadow-amber-900/20 group-hover:-rotate-1">
+                      <feature.icon className="h-6 w-6 sm:h-8 sm:w-8 text-amber-700 transition-colors duration-300 group-hover:text-amber-50" />
+                    </div>
+                    <div className="flex-1 min-w-0 pt-1">
+                      <CardTitle className="text-xl sm:text-2xl font-bold text-amber-950 mb-2 transition-colors duration-300">
+                        {feature.title}
+                      </CardTitle>
+                      <p className="text-amber-900/75 text-sm sm:text-base leading-relaxed font-light">{feature.desc}</p>
+                    </div>
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <CardTitle className="text-xl sm:text-2xl font-bold text-slate-900 mb-3 group-hover:text-green-600 transition-colors duration-300">
-                      {feature.title}
-                    </CardTitle>
-                    <p className="text-slate-700 text-base sm:text-lg leading-relaxed font-light">{feature.desc}</p>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="px-6 sm:px-8 pb-6 sm:pb-8">
-                <ul className="space-y-3">
-                  {feature.details.map((detail, detailIdx) => (
-                    <li key={detailIdx} className="flex items-start space-x-3 group/item">
-                      <div className="flex-shrink-0 mt-0.5">
-                        <CheckCircle className="h-5 w-5 text-green-600 group-hover/item:text-green-700 transition-colors duration-300" />
-                      </div>
-                      <span className="text-slate-700 group-hover/item:text-slate-900 transition-colors duration-300 font-medium text-sm sm:text-base">
-                        {detail}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+                </CardHeader>
+                <CardContent className="px-6 sm:px-8 pb-6 sm:pb-8 relative z-10">
+                  <ul className="space-y-3.5">
+                    {feature.details.map((detail, detailIdx) => (
+                      <li key={detailIdx} className="flex items-start space-x-3 group/item">
+                        <div className="flex-shrink-0 mt-0.5 relative">
+                          <CheckCircle className="h-5 w-5 text-amber-300 group-hover/item:text-amber-700 transition-colors duration-300 relative z-10 bg-white" />
+                          <div className="absolute inset-0 bg-amber-200 rounded-full blur-[2px] opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <span className="text-amber-900/80 group-hover/item:text-amber-950 transition-colors duration-300 font-medium text-sm sm:text-base">
+                          {detail}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

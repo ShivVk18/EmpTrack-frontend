@@ -76,9 +76,9 @@ const PayrollTable = () => {
   const getEmployeeTypeColor = (type) => {
     const colors = {
       PERMANENT: "bg-green-100 text-green-800",
-      CONTRACT: "bg-blue-100 text-blue-800",
+      CONTRACT: "bg-amber-100 text-amber-800",
       TEMPORARY: "bg-yellow-100 text-yellow-800",
-      INTERN: "bg-purple-100 text-purple-800",
+      INTERN: "bg-orange-100 text-orange-800",
     }
     return colors[type] || "bg-gray-100 text-gray-800"
   }
@@ -89,7 +89,7 @@ const PayrollTable = () => {
       <div className="p-4 border-b border-gray-200">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-900 flex items-center">
-            <Users className="h-5 w-5 mr-2 text-blue-600" />
+            <Users className="h-5 w-5 mr-2 text-amber-600" />
             Payroll Records
           </h2>
         </div>
@@ -103,7 +103,7 @@ const PayrollTable = () => {
             <select
               value={localFilters.month}
               onChange={(e) => handleFilterChange("month", e.target.value)}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             >
               <option value="">All Months</option>
               {Array.from({ length: 12 }, (_, i) => (
@@ -123,7 +123,7 @@ const PayrollTable = () => {
               placeholder="Year"
               min="2020"
               max="2030"
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             />
           </div>
 
@@ -135,7 +135,7 @@ const PayrollTable = () => {
             <select
               value={localFilters.employeeType}
               onChange={(e) => handleFilterChange("employeeType", e.target.value)}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             >
               <option value="">All Types</option>
               <option value="PERMANENT">Permanent</option>
@@ -153,7 +153,7 @@ const PayrollTable = () => {
             <select
               value={localFilters.departmentId}
               onChange={(e) => handleFilterChange("departmentId", e.target.value)}
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             >
               <option value="">All Departments</option>
               {departments &&
@@ -175,7 +175,7 @@ const PayrollTable = () => {
               value={localFilters.search}
               onChange={(e) => handleFilterChange("search", e.target.value)}
               placeholder="Search employee..."
-              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             />
           </div>
         </div>
@@ -184,7 +184,7 @@ const PayrollTable = () => {
           <button
             type="button"
             onClick={applyFilters}
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="px-4 py-2 text-sm font-medium text-white bg-amber-600 rounded-md hover:bg-amber-700 focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
           >
             <Filter className="h-4 w-4 mr-2 inline" />
             Apply Filters
@@ -203,7 +203,7 @@ const PayrollTable = () => {
       <div className="overflow-x-auto">
         {isLoading ? (
           <div className="flex items-center justify-center py-12">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-amber-600"></div>
             <span className="ml-3 text-gray-600">Loading payrolls...</span>
           </div>
         ) : (
@@ -270,7 +270,7 @@ const PayrollTable = () => {
                       <div className="flex items-center justify-center space-x-2">
                         <button
                           onClick={() => onOpenUpdate(payroll)}
-                          className="p-1 text-blue-600 hover:bg-blue-100 rounded transition-colors"
+                          className="p-1 text-amber-600 hover:bg-amber-100 rounded transition-colors"
                           title="Edit Payroll"
                         >
                           <Edit3 className="h-4 w-4" />
@@ -341,7 +341,7 @@ const PayrollTable = () => {
                     key={page}
                     onClick={() => handlePageChange(page)}
                     className={`px-3 py-1 text-sm rounded-md ${
-                      page === pagination.currentPage ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-100"
+                      page === pagination.currentPage ? "bg-amber-600 text-white" : "text-gray-700 hover:bg-gray-100"
                     }`}
                   >
                     {page}
@@ -367,12 +367,12 @@ const PayrollTable = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="bg-white p-4 rounded-lg border border-gray-200">
               <div className="flex items-center">
-                <div className="p-2 bg-blue-100 rounded-lg">
-                  <Users className="h-4 w-4 text-blue-600" />
+                <div className="p-2 bg-amber-100 rounded-lg">
+                  <Users className="h-4 w-4 text-amber-600" />
                 </div>
                 <div className="ml-3">
                   <p className="text-sm font-medium text-gray-900">Total Employees</p>
-                  <p className="text-lg font-semibold text-blue-600">{payrolls.length}</p>
+                  <p className="text-lg font-semibold text-amber-700">{payrolls.length}</p>
                 </div>
               </div>
             </div>

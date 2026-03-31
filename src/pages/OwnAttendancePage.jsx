@@ -2,6 +2,7 @@ import { DashboardLayout } from "@/components/dashboardComponents/DashboardLayou
 import { useAuthStore } from "@/store/useAuthStore";
 import OwnAttendanceTable from "@/components/attendanceComponents/OwnAttendanceTable";
 import React from "react";
+import AttendanceCalendar from "@/components/attendanceComponents/OwnAttendanceTable";
 
 const OwnAttendancePage = () => {
   const { user, userType, role } = useAuthStore.getState();
@@ -31,22 +32,15 @@ const OwnAttendancePage = () => {
   });
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full bg-amber-50">
       <DashboardLayout
         config={attendanceConfig()}
         minimalLayout
       >
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-2xl font-bold text-gray-900">My Attendance</h1>
-              <p className="text-gray-600 mt-1">
-                View and track your attendance records
-              </p>
-            </div>
-          </div>
           
-          <OwnAttendanceTable />
+          
+          <AttendanceCalendar/>
         </div>
       </DashboardLayout>
     </div>

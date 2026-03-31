@@ -15,7 +15,7 @@ const RolePieChart = ({ data }) => {
   return (
     <div className="bg-white rounded-xl p-4 lg:p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300">
       <div className="flex items-center mb-4 lg:mb-6">
-        <div className="bg-gradient-to-br from-purple-500 to-purple-600 p-2 lg:p-3 rounded-lg shadow-md mr-3">
+        <div className="bg-gradient-to-br from-amber-500 to-amber-600 p-2 lg:p-3 rounded-lg shadow-md mr-3">
           <UserCog className="h-5 w-5 lg:h-6 lg:w-6 text-white" />
         </div>
         <div>

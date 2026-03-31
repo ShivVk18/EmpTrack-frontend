@@ -87,16 +87,16 @@ export default function LoginForm() {
   return (
     <div className="w-full relative">
       {/* Background Effects */}
-      <div className="absolute -top-3 -right-3 w-12 h-12 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-gradient-to-br from-purple-600/10 via-indigo-600/8 to-blue-600/6 rounded-full blur-xl sm:blur-2xl animate-pulse pointer-events-none"></div>
+      <div className="absolute -top-3 -right-3 w-12 h-12 sm:w-20 sm:h-20 lg:w-24 lg:h-24 bg-amber-200/25 rounded-full blur-xl sm:blur-2xl pointer-events-none"></div>
       <div
-        className="absolute -bottom-3 -left-3 w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-indigo-600/10 via-blue-600/8 to-purple-600/6 rounded-full blur-xl sm:blur-2xl animate-pulse pointer-events-none"
+        className="absolute -bottom-3 -left-3 w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-amber-100/30 rounded-full blur-xl sm:blur-2xl pointer-events-none"
         style={{ animationDelay: "1s" }}
       ></div>
 
       <div className="relative z-10 space-y-3 sm:space-y-6 w-full">
         {/* Header */}
-        <div className="text-center pb-2 sm:pb-3 border-b border-purple-100">
-          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-purple-600">
+        <div className="text-center pb-2 sm:pb-3 border-b border-amber-100">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-amber-700">
             Sign In to Your Account
           </h3>
         </div>
@@ -119,7 +119,7 @@ export default function LoginForm() {
                     <Input
                       placeholder="you@company.com"
                       type="email"
-                      className="h-9 sm:h-10 lg:h-11 text-xs sm:text-sm transition-all duration-200 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 w-full"
+                      className="h-9 sm:h-10 lg:h-11 text-xs sm:text-sm transition-all duration-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 w-full"
                       {...field}
                     />
                   </FormControl>
@@ -145,7 +145,7 @@ export default function LoginForm() {
                     <Input
                       type="password"
                       placeholder="••••••••"
-                      className="h-9 sm:h-10 lg:h-11 text-xs sm:text-sm transition-all duration-200 focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 w-full"
+                      className="h-9 sm:h-10 lg:h-11 text-xs sm:text-sm transition-all duration-200 focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 w-full"
                       {...field}
                     />
                   </FormControl>
@@ -172,7 +172,7 @@ export default function LoginForm() {
                       onValueChange={field.onChange}
                       value={field.value || ""}
                     >
-                      <SelectTrigger className="w-full h-9 sm:h-10 lg:h-11 text-xs sm:text-sm focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500">
+                      <SelectTrigger className="w-full h-9 sm:h-10 lg:h-11 text-xs sm:text-sm focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500">
                         <SelectValue placeholder="Select user type" />
                       </SelectTrigger>
                       <SelectContent>
@@ -193,7 +193,7 @@ export default function LoginForm() {
             {/* Sign In Button */}
             <Button
               type="submit"
-              className="w-full h-9 sm:h-10 lg:h-12 bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 hover:from-purple-700 hover:via-indigo-700 hover:to-blue-700 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg text-xs sm:text-sm lg:text-base"
+              className="w-full h-9 sm:h-10 lg:h-12 bg-amber-500 hover:bg-amber-600 text-white font-medium rounded-lg transition-all duration-200 text-xs sm:text-sm lg:text-base shadow-sm hover:shadow-md"
             >
               Sign In
             </Button>
@@ -206,7 +206,7 @@ export default function LoginForm() {
             Don't have an account?{" "}
             <Link
               to="/signup"
-              className="text-indigo-600 hover:text-indigo-700 font-medium ml-1 transition-colors duration-200"
+              className="text-amber-700 hover:text-amber-800 font-medium ml-1 transition-colors duration-200"
             >
               Create one here
             </Link>{" "}

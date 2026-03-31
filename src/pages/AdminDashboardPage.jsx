@@ -33,9 +33,9 @@ const AdminDashboardPage = () => {
     },
     features: adminFeatures,
     stats: [
-      { title: "Total Employees", value: "2,847", icon: Users, color: "from-purple-600 to-purple-700" },
-      { title: "Active Today", value: "1,923", icon: UserCheck, color: "from-indigo-600 to-indigo-700" },
-      { title: "Performance", value: "94.2%", icon: TrendingUp, color: "from-blue-600 to-blue-700" },
+      { title: "Total Employees", value: "2,847", icon: Users, color: "from-amber-500 to-amber-600" },
+      { title: "Active Today", value: "1,923", icon: UserCheck, color: "from-orange-500 to-amber-600" },
+      { title: "Performance", value: "94.2%", icon: TrendingUp, color: "from-amber-600 to-orange-600" },
       { title: "Pending Tasks", value: "47", icon: Clock, color: "from-emerald-600 to-emerald-700" }
     ],
     statusInfo: {

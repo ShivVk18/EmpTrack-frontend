@@ -178,7 +178,7 @@ const AddEmployeeForm = () => {
     <div className="w-full">
       <div className="bg-white shadow-sm rounded-lg border border-gray-200 overflow-hidden">
         {/* Mobile-First Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-4 sm:px-6 sm:py-5">
+        <div className="bg-gradient-to-r from-amber-600 to-orange-600 px-4 py-4 sm:px-6 sm:py-5">
           <div className="flex flex-col space-y-4 sm:space-y-0 sm:flex-row sm:items-center sm:justify-between">
             <div className="text-center sm:text-left">
               <div className="flex items-center justify-center sm:justify-start space-x-2 mb-2">
@@ -189,7 +189,7 @@ const AddEmployeeForm = () => {
                   {stepTitles[step - 1]}
                 </h2>
               </div>
-              <p className="text-indigo-100 text-sm">
+              <p className="text-amber-100 text-sm">
                 Step {step} of {stepTitles.length}
               </p>
             </div>
@@ -205,7 +205,7 @@ const AddEmployeeForm = () => {
                         ? getStepErrors(idx + 1)
                           ? "bg-red-300"
                           : "bg-white"
-                        : "bg-indigo-300"
+                        : "bg-amber-300"
                     }`}
                   />
                 ))}
@@ -219,7 +219,7 @@ const AddEmployeeForm = () => {
           <div className="w-full bg-gray-200 rounded-full h-2">
             <div
               className={`h-2 rounded-full transition-all duration-300 ease-in-out ${
-                currentStepErrors.length > 0 ? "bg-red-500" : "bg-indigo-600"
+                currentStepErrors.length > 0 ? "bg-red-500" : "bg-amber-600"
               }`}
               style={{ width: `${(step / 3) * 100}%` }}
             />
@@ -239,7 +239,7 @@ const AddEmployeeForm = () => {
                 <div className="space-y-6">
                   <div className="border-b border-gray-200 pb-4">
                     <div className="flex items-center space-x-2">
-                      <User className="w-5 h-5 text-indigo-600" />
+                      <User className="w-5 h-5 text-amber-600" />
                       <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                         Personal Information
                       </h3>
@@ -284,7 +284,7 @@ const AddEmployeeForm = () => {
                         onChange={handleImageUpload}
                         className="hidden"
                       />
-                      <span className="bg-indigo-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-md hover:bg-indigo-700 transition-colors text-xs sm:text-sm font-medium">
+                      <span className="bg-amber-600 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-md hover:bg-amber-700 transition-colors text-xs sm:text-sm font-medium">
                         Upload Photo
                       </span>
                     </label>
@@ -381,7 +381,7 @@ const AddEmployeeForm = () => {
                 <div className="space-y-6">
                   <div className="border-b border-gray-200 pb-4">
                     <div className="flex items-center space-x-2">
-                      <Briefcase className="w-5 h-5 text-indigo-600" />
+                      <Briefcase className="w-5 h-5 text-amber-600" />
                       <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                         Work Information
                       </h3>
@@ -452,7 +452,7 @@ const AddEmployeeForm = () => {
                 <div className="space-y-6">
                   <div className="border-b border-gray-200 pb-4">
                     <div className="flex items-center space-x-2">
-                      <MapPin className="w-5 h-5 text-indigo-600" />
+                      <MapPin className="w-5 h-5 text-amber-600" />
                       <h3 className="text-base sm:text-lg font-semibold text-gray-900">
                         Location & Banking
                       </h3>
@@ -465,7 +465,7 @@ const AddEmployeeForm = () => {
                   <div className="space-y-6">
                     <div>
                       <div className="flex items-center space-x-2 mb-4">
-                        <MapPin className="w-4 h-4 text-blue-600" />
+                        <MapPin className="w-4 h-4 text-amber-600" />
                         <h4 className="text-sm sm:text-base font-medium text-gray-800">
                           Location Details
                         </h4>
@@ -579,7 +579,7 @@ const AddEmployeeForm = () => {
                       className={`w-full sm:w-auto px-4 py-2 text-sm font-medium transition-colors ${
                         currentStepErrors.length > 0
                           ? "bg-red-600 hover:bg-red-700"
-                          : "bg-indigo-600 hover:bg-indigo-700"
+                          : "bg-amber-600 hover:bg-amber-700"
                       }`}
                     >
                       {currentStepErrors.length > 0

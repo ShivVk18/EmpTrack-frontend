@@ -67,7 +67,7 @@ export const PaginationControls = ({ pagination, setPage }) => {
     <div className="flex flex-col items-center gap-4 py-6">
     
       <div className="text-sm text-gray-600 font-medium">
-        Page <span className="text-blue-600 font-semibold">{page}</span> of{" "}
+        Page <span className="text-amber-700 font-semibold">{page}</span> of{" "}
         <span className="text-gray-900 font-semibold">{totalPages}</span>
       </div>
 
@@ -84,7 +84,7 @@ export const PaginationControls = ({ pagination, setPage }) => {
                   ${
                     page === 1
                       ? "pointer-events-none opacity-40 bg-gray-50 text-gray-400 cursor-not-allowed"
-                      : "cursor-pointer bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:shadow-sm border border-gray-200 hover:border-blue-200"
+                      : "cursor-pointer bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-700 hover:shadow-sm border border-gray-200 hover:border-amber-200"
                   }
                 `}
               >
@@ -106,14 +106,14 @@ export const PaginationControls = ({ pagination, setPage }) => {
                       relative overflow-hidden transition-all duration-200 rounded-lg min-w-[40px] h-10 flex items-center justify-center text-sm font-medium cursor-pointer
                       ${
                         page === pageNum
-                          ? "bg-blue-600 text-white shadow-md hover:bg-blue-700 border-blue-600 transform scale-105"
-                          : "bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 border border-gray-200 hover:border-blue-200 hover:shadow-sm"
+                          ? "bg-amber-600 text-white shadow-md hover:bg-amber-700 border-amber-600 transform scale-105"
+                          : "bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-700 border border-gray-200 hover:border-amber-200 hover:shadow-sm"
                       }
                     `}
                   >
                     <span className="relative z-10">{pageNum}</span>
                     {page === pageNum && (
-                      <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-700 opacity-90" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-700 opacity-90" />
                     )}
                   </PaginationLink>
                 )}
@@ -129,7 +129,7 @@ export const PaginationControls = ({ pagination, setPage }) => {
                   ${
                     page === totalPages
                       ? "pointer-events-none opacity-40 bg-gray-50 text-gray-400 cursor-not-allowed"
-                      : "cursor-pointer bg-white text-gray-700 hover:bg-blue-50 hover:text-blue-600 hover:shadow-sm border border-gray-200 hover:border-blue-200"
+                      : "cursor-pointer bg-white text-gray-700 hover:bg-amber-50 hover:text-amber-700 hover:shadow-sm border border-gray-200 hover:border-amber-200"
                   }
                 `}
               >
@@ -156,7 +156,7 @@ export const PaginationControls = ({ pagination, setPage }) => {
                 handlePageChange(newPage)
               }
             }}
-            className="w-16 px-2 py-1 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+            className="w-16 px-2 py-1 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors"
           />
           <span className="text-gray-500">of {totalPages}</span>
         </div>

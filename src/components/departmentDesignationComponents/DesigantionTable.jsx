@@ -118,7 +118,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
                 >
                   <TableCell className="py-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
                         <span className="text-white text-sm font-medium">
                           {desig.name.charAt(0).toUpperCase()}
                         </span>
@@ -157,7 +157,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
                         size="sm"
                         variant="outline"
                         onClick={() => onEdit(desig.id)}
-                        className="h-8 px-2 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600"
+                        className="h-8 px-2 hover:bg-amber-50 hover:border-amber-200 hover:text-amber-700"
                       >
                         <Edit className="w-3.5 h-3.5" />
                         <span className="ml-1 hidden xl:inline">Edit</span>
@@ -209,7 +209,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
                 >
                   <TableCell className="py-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-8 h-8 bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
                         <span className="text-white text-sm font-medium">
                           {desig.name.charAt(0).toUpperCase()}
                         </span>
@@ -246,7 +246,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
                         size="sm"
                         variant="outline"
                         onClick={() => onEdit(desig.id)}
-                        className="h-8 px-2 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600"
+                        className="h-8 px-2 hover:bg-amber-50 hover:border-amber-200 hover:text-amber-700"
                       >
                         <Edit className="w-3.5 h-3.5" />
                       </Button>
@@ -273,7 +273,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
           <Card key={desig.id} className="p-3">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-3 flex-1 min-w-0">
-                <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-9 h-9 bg-gradient-to-br from-amber-500 to-amber-700 rounded-lg flex items-center justify-center flex-shrink-0">
                   <span className="text-white text-sm font-medium">
                     {desig.name.charAt(0).toUpperCase()}
                   </span>
@@ -309,7 +309,7 @@ const DesignationTable = ({ departmentId, onUpdate }) => {
                   size="sm"
                   variant="outline"
                   onClick={() => onEdit(desig.id)}
-                  className="h-8 w-8 p-0 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600"
+                  className="h-8 w-8 p-0 hover:bg-amber-50 hover:border-amber-200 hover:text-amber-700"
                 >
                   <Edit className="w-3.5 h-3.5" />
                 </Button>

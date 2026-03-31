@@ -5,6 +5,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { motion } from "motion/react";
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState(null);
@@ -50,90 +51,115 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-gradient-to-br from-white via-amber-50 to-orange-50"
+      className="py-16 sm:py-20 lg:py-24 relative overflow-hidden bg-amber-50"
     >
-      {/* Animated gradient orbs matching hero */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-amber-200/20 to-orange-200/20 rounded-full blur-3xl animate-pulse"></div>
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-yellow-200/20 to-amber-200/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+      {/* Animated ambient background (Amber) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/2 left-0 w-96 h-96 bg-amber-200/50 rounded-full blur-[110px] -translate-y-1/2 -ml-20"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-200/40 rounded-full blur-[110px] translate-y-20 translate-x-20"></div>
+      </div>
       
       {/* Subtle grid */}
-      <div className="absolute inset-0 opacity-[0.015]">
-        <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] bg-[size:80px_80px]"></div>
+      <div className="absolute inset-0 opacity-[0.12]">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(146,64,14,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(146,64,14,0.08)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
       </div>
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl relative z-10">
-        <div className="text-center mb-16 sm:mb-20">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl mb-6 shadow-xl shadow-amber-500/20 transform hover:scale-110 transition-all duration-500">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 sm:mb-20"
+        >
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-white border border-amber-200 rounded-2xl mb-6 shadow-sm transform transition-all duration-500 hover:scale-110 hover:shadow-md">
             <HelpCircle className="w-8 h-8 text-amber-700" />
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-neutral-900 leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 text-amber-950 leading-tight">
             Frequently Asked
-            <span className="block bg-gradient-to-r from-amber-600 via-orange-600 to-amber-700 bg-clip-text text-transparent">
+            <span className="block text-amber-800/85">
               Questions
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-neutral-600 font-light max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl text-amber-900/80 font-light max-w-2xl mx-auto">
             Discover EmpTrack's powerful features and capabilities
           </p>
-        </div>
+        </motion.div>
 
-        <div className="space-y-5">
+        <div className="space-y-4">
           {faqs.map((faq, index) => (
-            <Collapsible
+            <motion.div
               key={index}
-              open={openIndex === index}
-              onOpenChange={() => toggleFAQ(index)}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              <div
-                className={`group bg-white/60 backdrop-blur-sm border border-neutral-200 rounded-3xl shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 overflow-hidden ${
-                  openIndex === index
-                    ? "ring-2 ring-amber-500/30 shadow-xl shadow-amber-500/10 border-amber-200"
-                    : ""
-                }`}
+              <Collapsible
+                open={openIndex === index}
+                onOpenChange={() => toggleFAQ(index)}
               >
-                <CollapsibleTrigger className="w-full text-left p-6 sm:p-8 hover:bg-gradient-to-r hover:from-amber-50/50 hover:to-orange-50/30 transition-all duration-500 flex items-center justify-between group">
-                  <span className="font-semibold text-neutral-900 text-base sm:text-lg group-hover:text-amber-700 transition-all duration-500 pr-4 leading-relaxed">
-                    {faq.question}
-                  </span>
-                  <div className="flex-shrink-0">
-                    <div
-                      className={`w-11 h-11 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl flex items-center justify-center group-hover:from-amber-100 group-hover:to-orange-100 transition-all duration-500 group-hover:scale-110 shadow-sm ${
-                        openIndex === index ? "from-amber-100 to-orange-100 scale-110 shadow-md" : ""
-                      }`}
-                    >
-                      <ChevronDown
-                        className={`h-5 w-5 text-amber-700 transition-all duration-500 ${
-                          openIndex === index
-                            ? "rotate-180"
-                            : ""
+                <div
+                  className={`group bg-white/95 border rounded-2xl transition-all duration-500 overflow-hidden ${
+                    openIndex === index
+                      ? "border-amber-300 shadow-md shadow-amber-200/60"
+                      : "border-amber-200 shadow-sm hover:border-amber-300 hover:shadow-md"
+                  }`}
+                >
+                  <CollapsibleTrigger className="w-full text-left p-6 sm:p-7 hover:bg-amber-50 transition-colors duration-300 flex items-center justify-between group/trigger">
+                    <span className={`font-semibold text-base sm:text-lg transition-colors duration-300 pr-4 leading-relaxed ${openIndex === index ? 'text-amber-950' : 'text-amber-900 group-hover/trigger:text-amber-950'}`}>
+                      {faq.question}
+                    </span>
+                    <div className="flex-shrink-0">
+                      <div
+                        className={`w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                          openIndex === index ? "bg-amber-100" : "bg-amber-50 group-hover/trigger:bg-amber-100"
                         }`}
-                      />
-                    </div>
-                  </div>
-                </CollapsibleTrigger>
-                <CollapsibleContent className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
-                  <div className="px-6 sm:px-8 pb-6 sm:pb-8">
-                    <div className="text-neutral-700 text-sm sm:text-base leading-relaxed font-light border-t border-amber-100 pt-6 bg-gradient-to-r from-amber-50/40 to-orange-50/30 -mx-6 sm:-mx-8 px-6 sm:px-8 py-6 rounded-b-3xl">
-                      <div className="transform transition-all duration-700 delay-75">
-                        {faq.answer}
+                      >
+                        <ChevronDown
+                          className={`h-5 w-5 transition-transform duration-300 ${
+                            openIndex === index
+                              ? "rotate-180 text-amber-900"
+                              : "text-amber-400 group-hover/trigger:text-amber-700"
+                          }`}
+                        />
                       </div>
                     </div>
-                  </div>
-                </CollapsibleContent>
-              </div>
-            </Collapsible>
+                  </CollapsibleTrigger>
+                  <CollapsibleContent className="data-[state=open]:animate-accordion-down data-[state=closed]:animate-accordion-up overflow-hidden">
+                    <div className="px-6 sm:px-7 pb-6 sm:pb-7">
+                      <div className="text-amber-900/85 text-sm sm:text-base leading-relaxed font-light border-t border-amber-100 pt-5">
+                        <motion.div 
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          {faq.answer}
+                        </motion.div>
+                      </div>
+                    </div>
+                  </CollapsibleContent>
+                </div>
+              </Collapsible>
+            </motion.div>
           ))}
         </div>
 
-        {/* Bottom CTA - matching style */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-100 to-orange-100 rounded-full border border-amber-200">
-            <span className="text-neutral-900 font-semibold">Still have questions?</span>
-            <a href="#contact" className="text-amber-700 font-bold hover:text-orange-700 transition-colors duration-300 underline underline-offset-4">
-              Contact our team
+        {/* Bottom CTA inline */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <div className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-amber-200 rounded-full shadow-sm hover:border-amber-300 transition-colors duration-300">
+            <span className="text-amber-900 text-sm font-medium">Still have questions?</span>
+            <a href="#contact" className="text-amber-700 text-sm font-semibold hover:text-amber-900 transition-colors duration-300">
+              Contact our team &rarr;
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

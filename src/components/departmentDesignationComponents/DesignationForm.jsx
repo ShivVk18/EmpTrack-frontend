@@ -65,7 +65,7 @@ const DesignationForm = ({ refetch }) => {
               <div className="space-y-6">
                 <div className="border-b border-gray-200 pb-4">
                   <div className="flex items-center space-x-2">
-                    <ShieldCheck className="w-5 h-5 text-indigo-600" />
+                    <ShieldCheck className="w-5 h-5 text-amber-600" />
                     <h3 className="text-lg font-semibold text-slate-700">
                       {editId ? "Update Designation" : "Add Designation"}
                     </h3>

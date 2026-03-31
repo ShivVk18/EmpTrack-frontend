@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useMemo, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import { BackgroundOrbs } from "./BackgroundOrbs";
 import { Sidebar } from "./Sidebar";
 import { MobileMenuOverlay } from "./MobileMenuOverlay";
@@ -19,16 +19,23 @@ export function DashboardLayout({
   showFeatureGrid = true,
   minimalLayout = false,
 }) {
-  const [activeFeature, setActiveFeature] = useState(
-  config.features?.[0]?.title || ""
-);
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const activeFeature = useMemo(() => {
+    const features = config.features || [];
+    if (!features.length) return "";
+
+    const match =
+      features.find((f) => f.path && location.pathname.startsWith(f.path)) ||
+      features[0];
+
+    return match.title;
+  }, [config.features, location.pathname]);
 
   const handleFeatureSelect = (feature) => {
-    setActiveFeature(feature.title);
-    if (feature.path) {
+    if (feature?.path) {
       navigate(feature.path);
     }
   };
@@ -41,7 +48,7 @@ export function DashboardLayout({
   const welcome = welcomeMessage || defaultWelcomeMessage;
 
   return (
-    <div className="min-h-screen flex bg-stone-50 relative">
+    <div className="min-h-screen flex bg-amber-50 relative overflow-hidden">
       <BackgroundOrbs variant={config.variant} />
 
       <Sidebar
@@ -79,10 +86,10 @@ export function DashboardLayout({
             <>
               {/* Welcome */}
               <div className="mb-6 lg:mb-8">
-                <h1 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-2">
+                <h1 className="text-2xl lg:text-3xl font-bold text-amber-900 mb-2">
                   {welcome.title}
                 </h1>
-                <p className="text-slate-700 text-base lg:text-lg">
+                <p className="text-amber-800 text-base lg:text-lg">
                   {welcome.subtitle}
                 </p>
               </div>

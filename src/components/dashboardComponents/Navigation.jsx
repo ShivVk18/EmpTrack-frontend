@@ -12,22 +12,22 @@ export function Navigation({
   const getActiveColors = () => {
     switch (variant) {
       case 'employee':
-        return 'from-emerald-600/10 via-blue-600/10 to-teal-600/10 border-emerald-200/50';
+        return 'from-amber-500/10 via-amber-500/10 to-orange-500/10 border-amber-200/60';
       case 'managerialRole':
         return 'from-orange-600/10 via-red-600/10 to-pink-600/10 border-orange-200/50';
       default:
-        return 'from-purple-600/10 via-indigo-600/10 to-blue-600/10 border-purple-200/50';
+        return 'from-amber-600/10 via-amber-600/10 to-orange-600/10 border-amber-300/60';
     }
   };
 
   const getActiveIconColor = () => {
     switch (variant) {
       case 'employee':
-        return 'text-emerald-600';
+        return 'text-amber-600';
       case 'managerialRole':
         return 'text-orange-600';
       default:
-        return 'text-indigo-600';
+        return 'text-amber-700';
     }
   };
 
