@@ -25,7 +25,7 @@ const ProfilePage = () => {
       config={config}
       minimalLayout
     >
-      <div className="p-4">
+      <div className="p-4 h-screen w-full bg-amber-50">
          <MyProfileCard /> 
       </div>
     </DashboardLayout>

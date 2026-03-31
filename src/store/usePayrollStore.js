@@ -11,7 +11,8 @@ export const usePayrollStore = create((set, get) => ({
   isGenerateModalOpen: false,
   isUpdateModalOpen: false,
 
-  // Fetch payrolls from API
+   
+  
   fetchPayrolls: async () => {
     set({ isLoading: true })
     try {

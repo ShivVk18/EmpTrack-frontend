@@ -19,9 +19,11 @@ import ViewAllEmployeePage from "./pages/ViewAllEmloyeePage";
 import AttendancePlanPage from "./pages/AttendancePlanPage";
 import ComplainPage from "./pages/ComplainPage";
 import PayrollPage from "./pages/PayrollPage";
-import OwnAttendancePage from "./pages/OwnAttendancePage";
 import LeaveApplicationPage from "./pages/LeaveApplicationPage";
 import ManageLeaveApplicationPage from "./pages/ManageLeaveApplicationPage";
+import EmployeeSalary from "./pages/EmployeeSalary";
+
+import OwnAttendancePage from "./pages/OwnAttendancePage";
 
 function App() {
   return (
@@ -73,6 +75,7 @@ function App() {
         <Route path="/admin/dashboard/complaints" element={<ComplainPage/>} />
         <Route path="/employee/dashboard/own-attendance" element={<OwnAttendancePage/>} />
         <Route path="/employee/dashboard/apply-leave" element={<LeaveApplicationPage/>} />
+        <Route path="/employee/dashboard/view-salaries" element={<EmployeeSalary/>} />
         <Route path="/admin/dashboard/manage-apply-leave" element={<ManageLeaveApplicationPage/>} />
      
       </Routes>

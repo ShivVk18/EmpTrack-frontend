@@ -8,7 +8,7 @@ import React from "react";
 
 export default function LandingPage() {
   return (
-     <div className="min-h-screen bg-stone-50 flex flex-col overflow-x-hidden">
+     <div className="min-h-screen w-full bg-amber-50 flex flex-col overflow-x-hidden">
       <Header />
       <main>
         <HeroSection />

@@ -24,7 +24,7 @@ export const EMPLOYEE_FEATURES = {
     icon: BadgeIndianRupee,
     title: "My Salary",
     desc: "View your salary and payslips",
-    path: "/employee/dashboard/salary",
+    path: "/employee/dashboard/view-salaries",
   },
   myComplaints: {
     icon: Bell,
